@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- roslaunch arguments -->
+  <arg name="debug" default="false"/>
+  <arg name="gui" default="false"/>
+  <arg name="namespace" default="/bobcat"/>
+   <arg name="_world" default="false"/>
+   <arg name="world" default="empty_light"/>
+  <!-- rbcar_control launch file -->
+
+    <arg name="mode" default="sitl"/>
+    <arg name="pose_frame_id" default=""/>
+    <arg name="ual_server" default="on"/>
+      <arg name="target_ip" default="localhost"/>
+    <arg name="own_ip" default="localhost"/>
+    <arg name="ns_prefix" default="uav_"/>
+        <arg name="id" default="1"/>
+            <arg name="description_package" default="arm_description"/>
+                <arg name="robot_model" default="aeroarms_hecatonquiros_positioner_gripper"/>
+
+  
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" if="$(arg _world)">
+    <!--arg name="world_name" value="$(find rbcar_gazebo)/worlds/rbcar_gs.world" unless="$(arg _world)"/-->
+    <arg name="world_name" value="$(find px4_bringup)/config/$(arg world).world" if="$(arg _world)"/>
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" /> <!--TODO esta puesto a FALSE cuidado-->
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="headless" value="false"/>
+  </include>
+
+        <!-- TODO rbcar_robot_control warning odometry,i dont know if it can be problematic for  navigation-->
+           <!--rosparam file="$(find px4_bringup)/config/simulation_params.yaml" command="load" /-->
+        <node pkg="px4_bringup" type="launch_gzworld.py" name="gazebo_world" output="screen"
+        args="-physics=ode -world=$(find px4_bringup)/config/$(arg world).world" if="$(arg _world)"/>
+        
+
+        
+          <!--node pkg="px4_bringup" type="run_mavros.py" name="run_mavros_$(arg id)" output="screen"
+    args="-id=$(arg id) -mode=$(arg mode) -target_ip=$(arg target_ip) -own_ip=$(arg own_ip) -ns_prefix=$(arg ns_prefix)"/-->
+  
+   <group ns="$(arg namespace)">
+  <include file="$(find rbcar_control)/launch/rbcar_control.launch" />
+  
+  <!-- include file="$(find rbcar_pad)/launch/rbcar_pad.launch" / -->
+  <!-- use a pad that publishes geometry_msgs::Twist refs -->
+    
+  <!--include file="$(find summit_xl_pad)/launch/summit_xl_pad.launch"/-->
+
+  <!-- transform these vel msgs to robot commands via the twist2ack node -->
+  <node name="twist2ack" pkg="rbcar_twist2ack" type="twist2ack.py" respawn="true" output="screen"/>
+  
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+
+
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <param name="robot_description"
+         command="$(find xacro)/xacro '$(find rbcar_description)/robots/rbcar.urdf.xacro' --inorder" />
+         
+  <!-- Call a python script to the run a service call to gazebo_ros to spawn a URDF robot -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-urdf -model rbcar -param robot_description -z 1 -x 0 -y 3"/>
+</group>
+</launch>

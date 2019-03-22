@@ -1,0 +1,372 @@
+<?xml version="1.0" ?>
+<robot name="bobcat" xmlns:xacro="https://www.ros.org/wiki/xacro">
+
+  <material name="Black">
+    <color rgba="0.0 0.0 0.0 1.0"/>
+  </material>
+  <material name="Blue">
+    <color rgba="0.203125 0.23828125 0.28515625 1.0"/>
+  </material>
+  <material name="Green">
+    <color rgba="0.0 0.8 0.0 1.0"/>
+  </material>
+  <material name="Grey">
+    <color rgba="0.2 0.2 0.2 1.0"/>
+  </material>
+  <material name="Orange">
+    <color rgba="1.0 0.423529411765 0.0392156862745 1.0"/>
+  </material>
+  <material name="Brown">
+    <color rgba="0.870588235294 0.811764705882 0.764705882353 1.0"/>
+  </material>
+  <material name="Red">
+    <color rgba="0.80078125 0.12890625 0.1328125 1.0"/>
+  </material>
+  <material name="White">
+    <color rgba="1.0 1.0 1.0 1.0"/>
+  </material>
+
+   <link name="base_link">
+      <visual>
+         <origin rpy="0 0 0" xyz="0 0 0" />
+      </visual>
+   </link>
+
+  <link name="chassis">
+  
+    <inertial>
+      <mass value="20"/>
+      <origin rpy="0 0 0" xyz="0 0 0.1"/>
+      <inertia ixx="0.0395416666667" ixy="0" ixz="0" iyy="0.106208333333" iyz="0" izz="0.106208333333"/>
+    </inertial>
+    
+    <collision name="collision_chassis">
+          <origin rpy="1.57079632679 0 0" xyz="0 0 0"/>
+          <geometry>
+            <mesh filename="package://bobcat_description/meshes/chassis-subassem.stl" scale="0.001 0.001 0.001"/>           
+          </geometry>
+    </collision>
+    
+      <visual>
+          <origin rpy="1.57079632679 0 0" xyz="0 0 0"/>
+          <geometry>
+            <mesh filename="package://bobcat_description/meshes/chassis-subassem.stl" scale="0.001 0.001 0.001"/>           
+          </geometry>
+          <material name="White"/>
+      </visual>
+      
+    </link>
+
+    <!--link name="steering_subassem">
+     <inertial>
+      <mass value="5"/>
+      <origin rpy="0 0 0" xyz="0 0 0.1"/>
+      <inertia ixx="0.0395416666667" ixy="0" ixz="0" iyy="0.106208333333" iyz="0" izz="0.106208333333"/>
+    </inertial>
+    
+    
+      <visual>
+          <origin rpy="1.57079632679 0 0" xyz="0 0 0"/>
+          <geometry>
+            <mesh filename="package://bobcat_description/meshes/steering_subassem.stl" scale="0.001 0.001 0.001"/>
+            
+          </geometry>
+          <material name="White"/>
+      </visual>
+      
+            <collision name="collision_steering_subassem">
+          <origin rpy="1.57079632679 0 0" xyz="0 0 0"/>
+          <geometry>
+            <mesh filename="package://bobcat_description/meshes/steering_subassem.stl" scale="0.001 0.001 0.001"/>
+            
+          </geometry>
+          <material name="White"/>
+      </collision>
+          
+    </link>
+
+    <link name="steering_col_subassem">
+    
+        <inertial>
+      <mass value="5"/>
+      <origin rpy="0 0 0" xyz="0 0 0.1"/>
+      <inertia ixx="0.0395416666667" ixy="0" ixz="0" iyy="0.106208333333" iyz="0" izz="0.106208333333"/>
+    </inertial>
+      <visual>
+          <origin rpy="1.57079632679 0 0" xyz="0 0 0"/>
+          <geometry>
+            <mesh filename="package://bobcat_description/meshes/steering_col_subassem.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="White"/>
+      </visual>
+      
+            <collision>
+          <origin rpy="1.57079632679 0 0" xyz="0 0 0"/>
+          <geometry>
+            <mesh filename="package://bobcat_description/meshes/steering_col_subassem.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="White"/>
+      </collision>
+    </link-->
+
+    <link name="steering_wheel_fr">
+    
+        <inertial>
+      <mass value="5"/>
+      <origin rpy="0 0 0" xyz="0 0 0.1"/>
+      <inertia ixx="0.0395416666667" ixy="0" ixz="0" iyy="0.106208333333" iyz="0" izz="0.106208333333"/>
+    </inertial>
+      <visual>
+          <origin rpy="1.57079632679 0 0" xyz="0.5 0.36 0.08"/>
+          <geometry>
+            <mesh filename="package://bobcat_description/meshes/fr_wheel.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="Black"/>
+      </visual>
+      
+            <collision>
+          <origin rpy="1.57079632679 0 0" xyz="0.5 0.36 0.08"/>
+          <geometry>
+            <mesh filename="package://bobcat_description/meshes/fr_wheel.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="Black"/>
+      </collision>
+    </link>
+    
+        <link name="steering_wheel_fr_direction">
+    
+        <inertial>
+      <mass value="5"/>
+      <origin rpy="0 0 0" xyz="0 0 0.1"/>
+      <inertia ixx="0.0395416666667" ixy="0" ixz="0" iyy="0.106208333333" iyz="0" izz="0.106208333333"/>
+    </inertial>
+      <visual>
+          <origin rpy="1.57079632679 0 0" xyz="0.5 0.36 0.08"/>
+          <!--geometry>
+            <mesh filename="package://bobcat_description/meshes/fr_wheel.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="Black"/-->
+      </visual>
+      
+            <collision>
+          <!--origin rpy="1.57079632679 0 0" xyz="0.5 0.36 0.08"/>
+          <geometry>
+            <mesh filename="package://bobcat_description/meshes/fr_wheel.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="Black"/-->
+      </collision>
+    </link>
+    
+
+    <link name="steering_wheel_fl">
+    
+        <inertial>
+      <mass value="5"/>
+      <origin rpy="0 0 0" xyz="0 0 0.1"/>
+      <inertia ixx="0.0395416666667" ixy="0" ixz="0" iyy="0.106208333333" iyz="0" izz="0.106208333333"/>
+    </inertial>
+      <visual>
+          <origin rpy="1.57079632679 0 0" xyz="-0.5 0.36 0.08"/>
+          <geometry>
+            <mesh filename="package://bobcat_description/meshes/fl_wheel.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="Black"/>
+      </visual>
+      
+            <collision>
+          <origin rpy="1.57079632679 0 0" xyz="-0.5 0.36 0.08"/>
+          <geometry>
+            <mesh filename="package://bobcat_description/meshes/fl_wheel.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="Black"/>
+      </collision>
+    </link>
+    
+        <link name="steering_wheel_fl_direction">
+    
+        <inertial>
+      <mass value="5"/>
+      <origin rpy="0 0 0" xyz="0 0 0.1"/>
+      <inertia ixx="0.0395416666667" ixy="0" ixz="0" iyy="0.106208333333" iyz="0" izz="0.106208333333"/>
+    </inertial>
+      <visual>
+          <origin rpy="1.57079632679 0 0" xyz="-0.5 0.36 0.08"/>
+          <!--geometry>
+            <mesh filename="package://bobcat_description/meshes/fl_wheel.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="Black"/-->
+      </visual>
+      
+            <collision>
+          <!--origin rpy="1.57079632679 0 0" xyz="-0.5 0.36 0.08"/>
+          <geometry>
+            <mesh filename="package://bobcat_description/meshes/fl_wheel.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="Black"/-->
+      </collision>
+    </link>
+
+
+    <link name="steering_wheel_rr">
+    
+        <inertial>
+      <mass value="5"/>
+      <origin rpy="0 0 0" xyz="0 0 0.1"/>
+      <inertia ixx="0.0395416666667" ixy="0" ixz="0" iyy="0.106208333333" iyz="0" izz="0.106208333333"/>
+    </inertial>
+      <visual>
+          <origin rpy="1.57079632679 0 0" xyz="0.5 -1.32 0.08"/>
+          <geometry>
+            <mesh filename="package://bobcat_description/meshes/rr_wheel.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="Black"/>
+      </visual>
+            <collision>
+          <origin rpy="1.57079632679 0 0" xyz="0.5 -1.32 0.08"/>
+          <geometry>
+            <mesh filename="package://bobcat_description/meshes/rr_wheel.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="Black"/>
+      </collision>
+    </link>
+
+    <link name="steering_wheel_rl">
+    
+        <inertial>
+      <mass value="5"/>
+      <origin rpy="0 0 0" xyz="0 0 0.1"/>
+      <inertia ixx="0.0395416666667" ixy="0" ixz="0" iyy="0.106208333333" iyz="0" izz="0.106208333333"/>
+    </inertial>
+      <visual>
+          <origin rpy="1.57079632679 0 0" xyz="-0.5 -1.32 0.08"/>
+          <geometry>
+            <mesh filename="package://bobcat_description/meshes/rl_wheel.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="Black"/>
+      </visual>
+            <collision>
+          <origin rpy="1.57079632679 0 0" xyz="-0.5 -1.32 0.08"/>
+          <geometry>
+            <mesh filename="package://bobcat_description/meshes/rl_wheel.stl" scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="Black"/>
+      </collision>
+    </link>
+
+
+
+    <!--joint name="body_to_steering" type="fixed">
+        <parent link="chassis"/>
+        <child link="steering_subassem"/>
+        <origin xyz="0 0 0"/>
+    </joint>
+
+    <joint name="body_to_steering_col" type="fixed">
+        <parent link="chassis"/>
+        <child link="steering_col_subassem"/>
+        <origin xyz="0 0 0"/>
+    </joint-->
+    
+           <joint name="base_link_joint" type="fixed">
+      <parent link="base_link" />
+      <child link="chassis" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+   </joint>
+    
+     <joint name="frw_to_steering_direction" type="revolute">
+        <parent link="chassis"/>
+        <child link="steering_wheel_fr_direction"/>
+        <origin xyz="-0.5 -0.35 -0.08" rpy="0 1.5708 0"/>
+        <limit effort="1000" velocity="1000" lower="-0.55" upper="0.55"/>
+    </joint>
+    
+    
+        <joint name="frw_to_steering" type="continuous">
+        <parent link="steering_wheel_fr_direction"/>
+        <child link="steering_wheel_fr"/>
+        <origin xyz="0 0 0" rpy="0 -1.5708 0"/>
+        <limit effort="1000" velocity="1000"/>
+    </joint>
+    
+
+  <joint name="flw_to_steering_direction" type="revolute">
+        <parent link="chassis"/>
+        <child link="steering_wheel_fl_direction"/>
+        <origin xyz="0.5 -0.35 -0.08" rpy="0 1.5708 0"/>
+        <limit effort="1000" velocity="1000" lower="-0.55" upper="0.55"/>
+    </joint>
+    
+    
+        <joint name="flw_to_steering" type="continuous">
+        <parent link="steering_wheel_fl_direction"/>
+        <child link="steering_wheel_fl"/>
+        <origin xyz="0 0 0" rpy="0 -1.5708 0"/>
+        <limit effort="1000" velocity="1000"/>
+    </joint>
+
+    <joint name="body_to_rrw" type="continuous">
+        <parent link="chassis"/>
+        <child link="steering_wheel_rr"/>
+        <origin xyz="-0.5 1.32 -0.08"/>
+        <limit effort="1000" velocity="1000"/>
+    </joint>
+
+    <joint name="body_to_rlw" type="continuous">
+        <parent link="chassis"/>
+        <child link="steering_wheel_rl"/>
+        <origin xyz="0.5 1.32 -0.08"/>
+        <limit effort="1000" velocity="1000"/>
+    </joint>
+
+
+<transmission name="tran_frw_to_steering">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="frw_to_steering">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_frw_to_steering">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+    
+    <transmission name="tran_flw_to_steering">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="flw_to_steering">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_flw_to_steering">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+    
+    <transmission name="tran_body_to_rrw">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="body_to_rrw">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_body_to_rrw">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+    
+    <transmission name="tran_body_to_rlw">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="body_to_rlw">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_body_to_rlw">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/bobcat</robotNamespace>
+    </plugin>
+  </gazebo>
+
+</robot>

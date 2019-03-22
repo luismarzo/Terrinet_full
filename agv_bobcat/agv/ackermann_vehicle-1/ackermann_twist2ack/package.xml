@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package>
+  <name>ackermann_twist2ack</name>
+  <version>0.0.0</version>
+  <description>The ackermann_twist2ack package</description>
+
+  <maintainer email="info@robotnik.es">ackermann</maintainer>
+
+  <license>BSD</license>
+
+
+
+  <author email="info@ackermann.es">ackermann</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>ackermann_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>rospy</build_depend>
+  <run_depend>ackermann_msgs</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>rospy</run_depend>
+
+  <export>
+  </export>
+</package>

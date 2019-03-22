@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="namespace" default="/bobcat"/>
+	 <arg name="_world" default="true"/>
+  <!-- start gazebo simulation -->
+  <include file="$(find rbcar_gazebo)/launch/rbcar_gs.launch">
+  <arg name="_world" value="$(arg _world)" />
+  </include>
+
+
+  <group ns="$(arg namespace)">
+  <!-- start robot_control node -->
+  <include file="$(find rbcar_robot_control)/launch/rbcar_robot_control.launch"/>
+
+  <!-- start laser filter -->
+  <!-- include file="$(find rbcar_sim_bringup)/launch/my_laser_filter.launch"/ -->
+  <node name="laser_bounds_filter" type="laser_bounds_filter" pkg="rbcar_navigation" />
+   <!--node pkg="tf" type="static_transform_publisher" name="base_to_map" args="0 0 0 0 0 0 /bobcat/map /bobcat/odom 1" /-->
+  </group>
+</launch>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+ 
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+
+  <!--TODO passing arguments to yaml files-->
+  <rosparam file="$(find bobcat_description)/config/control.yaml" command="load"/>
+
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="log" ns="/bobcat" args="joint_state_controller
+            frw_to_steering_position_controller
+            flw_to_steering_position_controller
+            body_to_rrw_position_controller
+            body_to_rlw_position_controller"/>
+
+
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+	respawn="false" output="screen">
+	 <remap from="/joint_states" to="/bobcat/joint_states" />
+  </node>
+
+ 
+
+
+</launch>

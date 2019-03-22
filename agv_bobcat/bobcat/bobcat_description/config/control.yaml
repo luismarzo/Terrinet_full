@@ -1,0 +1,25 @@
+bobcat:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+  
+  # Position Controllers ---------------------------------------
+  frw_to_steering_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: frw_to_steering
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  flw_to_steering_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: flw_to_steering
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  body_to_rrw_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: body_to_rrw
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  body_to_rlw_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: body_to_rlw
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+

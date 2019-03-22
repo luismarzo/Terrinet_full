@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="urdf_file" default="$(find xacro)/xacro.py '$(find rbcar_description)/robots/rbcar.urdf.xacro'" />
+  <arg name="namespace" default="/bobcat" />
+  <param name="robot_description" command="$(arg urdf_file)" />
+<group ns="$(arg namespace)">
+  
+
+  <!-- send fake joint values -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="TRUE"/>
+  </node>
+
+  <!-- Combine joint values -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+
+  <!-- Show in Rviz   -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find rbcar_description)/launch/rbcar.rviz"/> 
+  
+
+  </group>
+            <node name="bobsub_and_pub_rviz" pkg="rbcar_description" type="bobsub_and_pub_rviz" respawn="true" output="screen"/>
+</launch>
+

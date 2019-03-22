@@ -1,0 +1,164 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <!-- We use a custom world for the rrbot so that the camera angle is launched correctly -->
+
+  <world name="default">
+    <include>
+      <uri>model://minitable</uri>
+      <pose>2.5 -2.48 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://unit_box</uri>
+      <pose>0 -0.485773 0.255625 3.1415 0 -1.551854</pose>
+      <static>0</static>
+    </include>
+
+<model name="box_mini">
+      <pose>0.15 -1.6 0.05 0 0 0</pose>
+      <link name="link">
+      <inertial>
+        <mass>0.01</mass>
+        </inertial>
+        <collision name="collision"> <!--necesaria para que se quede en el suelo-->
+          <geometry>
+            
+               <sphere>
+              <radius>0.001</radius>
+            </sphere>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+         <geometry>
+            <!--box>
+              <size>0.1 0.1 0.1</size>
+            </box-->
+               <sphere>
+              <radius>0.02</radius>
+            </sphere>
+          </geometry>
+        </visual>
+      </link>
+      </model>
+
+      <include>
+      <uri>model://wall_wooden</uri>
+       <name>wall_wooden1</name>
+      <pose>15.15 10 0 0 0 0</pose>
+      <static>1</static>
+    </include>
+
+         <include>
+      <uri>model://wall_wooden</uri>
+      <name>wall_wooden2</name>
+      <pose>-8.768 -14 0 0 0 1.57</pose>
+      <static>1</static>
+    </include>
+
+  
+
+          <include>
+      <uri>model://shelves_high2</uri>
+      <pose>-6.20 8.6 0 0 0 0</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://shelves_high</uri>
+      <pose>-0.95 9.284 0 0 0 0</pose>
+      <static>1</static>
+    </include>
+
+      <include>
+      <uri>model://pioneer2dx</uri>
+      <name>pioneer2dx_1</name>
+      <pose>-7.8 0.1974 0 0 0 0</pose>
+      <static>1</static>
+    </include>
+
+      <include>
+      <uri>model://pioneer2dx</uri>
+      <name>pioneer2dx_2</name>
+      <pose>-7.8 0.683 0 0 0 0</pose>
+      <static>1</static>
+    </include>    
+
+      <include>
+      <uri>model://pioneer2dx</uri>
+      <name>pioneer2dx_3</name>
+      <pose>-7.8 1.17 0 0 0 0</pose>
+      <static>1</static>
+    </include>
+
+      <include>
+      <uri>model://minitable</uri>
+      <name>minitable_2</name>
+      <pose>-7.65 4.39 0 0 0 -1.57</pose>
+      <static>1</static>
+    </include>    
+
+
+
+     <include>
+      <uri>model://table_marble</uri>
+      <pose>-0.747 4.077 0.64 0 0 0</pose>
+      <static>1</static>
+    </include>
+
+    <include>
+      <uri>model://zephyr_delta_wing</uri>
+      <pose>-0.6307 3.821 1.139 0 0 0</pose>
+      <static>1</static>
+    </include>
+
+
+
+
+
+    <!-- Global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+      <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Focus camera on tall pendulum -->
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>4.927360 -4.376610 2.740080 0.000000 0.275643 2.356190</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+
+        <scene>
+      <ambient>0.4 0.4 0.4 1.0</ambient>
+      <grid>false</grid>
+      <sky>
+        <clouds>
+          <speed>4</speed>
+        </clouds>
+      </sky>
+      <shadows>false</shadows>
+    </scene>
+
+    <light type="directional" name="sun">
+      <cast_shadows>false</cast_shadows>
+      <pose>0 0 100 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.9 0.9 0.9 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>0.2 0.2 -0.9</direction>
+    </light>
+
+
+    
+  </world>
+</sdf>

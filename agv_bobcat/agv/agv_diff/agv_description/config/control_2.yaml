@@ -1,0 +1,73 @@
+agv:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+  
+  # Position Controllers ---------------------------------------
+  joint_right_wheel_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint_right_wheel
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_right_wheel_dir_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint_right_wheel_dir
+    pid: {p: 100.0, i: 0.01, d: 10.0}  
+  joint_left_wheel_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint_left_wheel
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_left_wheel_dir_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint_left_wheel_dir
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_right_wheel_2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint_right_wheel_2
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_right_wheel_2_dir_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint_right_wheel_2_dir
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_left_wheel_2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint_left_wheel_2
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_left_wheel_2_dir_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint_left_wheel_2_dir
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_left_wheel_3_dir_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint_left_wheel_3_dir
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_left_wheel_4_dir_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint_left_wheel_4_dir
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_left_wheel_3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint_left_wheel_3
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_right_wheel_3_dir_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint_right_wheel_3_dir
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_right_wheel_4_dir_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint_right_wheel_4_dir
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_right_wheel_3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint_right_wheel_3
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_right_wheel_4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint_right_wheel_4
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_left_wheel_4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint_left_wheel_4
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+ 
+  

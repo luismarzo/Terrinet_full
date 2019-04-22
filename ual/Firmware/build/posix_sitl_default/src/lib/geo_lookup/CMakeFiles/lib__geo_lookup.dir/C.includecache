@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/luis/ws_ual/src/Firmware/src/lib/geo_lookup/geo_mag_declination.c
+stdint.h
+-
+geo_mag_declination.h
+/home/luis/ws_ual/src/Firmware/src/lib/geo_lookup/geo_mag_declination.h
+
+/home/luis/ws_ual/src/Firmware/src/lib/geo_lookup/geo_mag_declination.h
+

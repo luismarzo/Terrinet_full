@@ -23,7 +23,7 @@ catkin_package(
 CATKIN_DEPENDS
     roscpp
  # LIBRARIES ${PROJECT_NAME}
-  INCLUDE_DIRS include 
+ # INCLUDE_DIRS include 
 
 )
 

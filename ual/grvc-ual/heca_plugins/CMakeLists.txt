@@ -48,7 +48,7 @@ catkin_package(
     gazebo_ros
     message_runtime
   LIBRARIES ${PROJECT_NAME}
-  INCLUDE_DIRS include
+  #INCLUDE_DIRS include
 )
 
 include_directories(include)

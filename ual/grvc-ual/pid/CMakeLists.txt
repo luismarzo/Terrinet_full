@@ -39,7 +39,7 @@ include_directories(
 )
 
 catkin_package(
-   INCLUDE_DIRS include
+  # INCLUDE_DIRS include
 
 )
 

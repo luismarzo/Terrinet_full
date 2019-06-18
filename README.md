@@ -62,9 +62,21 @@ https://github.com/grvcTeam/grvc-ual/wiki/How-to-build-and-install-grvc-ual
 
 `sudo geographiclib-get-geoids egm96-5`
 
+## Install firmware
+
+` cd ~/catkin_ws/src `
+
+` git clone --recursive https://github.com/PX4/Firmware.git`
+
+` cd Firmware`
+
+` git checkout -f v1.7.3`
+
+` git submodule update --recursive`
+
 ## Usage 
 
--->For now Hecatonquiros and rx90 are stand alone robots. They have their owns configurations and gazebo maps for diferent purpose demos.
+-->Currently Hecatonquiros and rx90 are stand alone robots. They have their owns configurations and gazebo maps for diferent purpose demos.
 
 -->If you want to use mobile robots and some uavs, you should start first the uavs. We are having issues with them (we are fixing it)
 

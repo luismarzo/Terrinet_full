@@ -2,6 +2,11 @@ cmake_minimum_required(VERSION 2.8.3)
 project(pid)
 
 add_definitions(-std=c++11)
+
+IF(NOT DEFINED CMAKE_BUILD_TYPE)
+   SET(CMAKE_BUILD_TYPE "release")
+ENDIF(NOT DEFINED CMAKE_BUILD_TYPE)
+
 find_package(catkin REQUIRED COMPONENTS
 			std_msgs
 			sensor_msgs
@@ -33,15 +38,6 @@ generate_messages(
 )
 
 
-include_directories(
-# include
-  ${catkin_INCLUDE_DIRS}
-)
-
-catkin_package(
-  # INCLUDE_DIRS include
-
-)
 
 catkin_package(
   CATKIN_DEPENDS roscpp std_msgs geometry_msgs std_srvs gazebo_ros message_runtime
@@ -52,26 +48,26 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 add_library(${PROJECT_NAME}
-src/PID.cpp src/docker_pid.cpp 
+pid/PID.cpp pid/docker_pid.cpp 
 )
 
-file(GLOB_RECURSE SRC_FILES "src/*.cpp" "include/*.h" "include/*.inl" )
+file(GLOB_RECURSE PID_FILES "pid/*.cpp" "pid/*.h" "pid/*.inl" )
 link_directories(${GAZEBO_LIBRARY_DIRS})
 include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
 
-#add_executable(ual_pid src/ual_pid.cpp src/PID.cpp)
+#add_executable(ual_pid pid/ual_pid.cpp pid/PID.cpp)
 #target_link_libraries(ual_pid ${catkin_LIBRARIES})
-#include_directories(PUBLIC ${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/include)
+#include_directories(PUBLIC ${PROJECT_SOURCE_DIR}/pid ${PROJECT_SOURCE_DIR}/include)
 #add_dependencies(ual_pid pid_node_generate_messages_cpp)
 
-add_executable(docker_pid src/docker_pid.cpp src/PID.cpp)
-target_link_libraries(docker_pid ${catkin_LIBRARIES})
-include_directories(PUBLIC ${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/include)
-add_dependencies(docker_pid pid_generate_messages_cpp)
+#add_executable(docker_pid pid/docker_pid.cpp pid/PID.cpp)
+#target_link_libraries(docker_pid ${catkin_LIBRARIES})
+#include_directories(PUBLIC ${PROJECT_SOURCE_DIR}/pid ${PROJECT_SOURCE_DIR}/include)
+#add_dependencies(docker_pid pid_generate_messages_cpp)
 
 
 
-#add_executable(alex src/alex.cpp src/PID.cpp)
+#add_executable(alex pid/alex.cpp pid/PID.cpp)
 #target_link_libraries(alex ${catkin_LIBRARIES})
-#include_directories(PUBLIC ${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/include)
+#include_directories(PUBLIC ${PROJECT_SOURCE_DIR}/pid ${PROJECT_SOURCE_DIR}/include)
 #add_dependencies(alex pid_node_generate_messages_cpp)

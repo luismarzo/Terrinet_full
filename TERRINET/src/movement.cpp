@@ -24,8 +24,7 @@ Movement::Movement(QWidget *parent) :
     ui->comboBox->addItem("Pioneer");
     ui->comboBox->addItem("Bobcat");
     ui->comboBox->addItem("Agv");
-
-
+    ui->comboBox->addItem("Gecko");
 
 
 }
@@ -38,6 +37,7 @@ Movement::~Movement()
 
 
 
+
 void Movement::on_comboBox_currentIndexChanged(const QString &arg1)
 {
     if(ui->comboBox->currentText() == "Pioneer"){
@@ -46,6 +46,7 @@ void Movement::on_comboBox_currentIndexChanged(const QString &arg1)
         _pio=true;
         _bob=false;
         _agv=false;
+        _gecko=false;
     }
     else if(ui->comboBox->currentText() == "Bobcat"){
 
@@ -53,6 +54,7 @@ void Movement::on_comboBox_currentIndexChanged(const QString &arg1)
         _pio=false;
         _bob=true;
         _agv=false;
+        _gecko=false;
     }
     else if(ui->comboBox->currentText() == "Agv"){
 
@@ -60,6 +62,16 @@ void Movement::on_comboBox_currentIndexChanged(const QString &arg1)
         _pio=false;
         _bob=false;
         _agv=true;
+        _gecko=false;
+    }
+    else if(ui->comboBox->currentText() == "Gecko"){
+
+        _gecko_pub = _n.advertise<std_msgs::Float64MultiArray>("/gecko/gecko_group_position_controller/command", 1000);
+        _pio=false;
+        _bob=false;
+        _agv=false;
+        _gecko=true;
+
     }
 }
 
@@ -72,20 +84,20 @@ void Movement::on_sendtopic_clicked(){
     _steer=ui->lineEdit_ste->text();
     carvel=_carvel.toFloat();
     steer=_steer.toFloat();
-    std::cout<<_pio<<_bob<<_agv;
+
 
     if(_pio==true){
         _piomsg.linear.x=carvel;
         _piomsg.angular.z=steer;
         _pi_pub.publish(_piomsg);
-std::cout<<"pio";
+
 
     }
     else if(_bob==true){
 
         _bobmsg.drive.speed=carvel;
         _bobmsg.drive.steering_angle=steer;
-        _bob_pub.publish(_bobmsg);std::cout<<"bob";
+        _bob_pub.publish(_bobmsg);
 
     }
     else if(_agv==true){
@@ -98,7 +110,29 @@ std::cout<<"pio";
         if(_agvmsg.steering_angle<-0.6){
          _agvmsg.steering_angle=-0.6;
         }
-        _agv_pub.publish(_agvmsg);std::cout<<"agv";
+        _agv_pub.publish(_agvmsg);
+    }
+    else if(_gecko==true){
+        ros::Rate loop_rate(10);
+        while(_gecko_cnt<6.3){
+            _gecko_vec = {_gecko_cnt,_gecko_cnt,_gecko_cnt,_gecko_cnt};
+
+            _geckomsg.layout.dim.push_back(std_msgs::MultiArrayDimension());
+            _geckomsg.layout.dim[0].size = _gecko_vec.size();
+            _geckomsg.layout.dim[0].stride = 1;
+            _geckomsg.layout.dim[0].label = "wow";
+
+
+            _geckomsg.data.clear();
+            _geckomsg.data.insert(_geckomsg.data.end(), _gecko_vec.begin(),_gecko_vec.end());
+            _gecko_pub.publish(_geckomsg);
+            _gecko_cnt=_gecko_cnt+0.3;
+            ros::spinOnce();
+
+            loop_rate.sleep();
+
+        }
+        _gecko_cnt=0;
     }
     else{std::cout<<"no entra";}
 

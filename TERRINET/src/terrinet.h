@@ -70,6 +70,8 @@ private slots:
 
     void on_rviz_clicked();
 
+    void on_gecko_clicked();
+
 
 
 private:

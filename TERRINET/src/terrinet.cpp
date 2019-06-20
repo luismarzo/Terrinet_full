@@ -57,6 +57,13 @@ void Terrinet::on_topics_clicked()
     move->show();
 }
 
+void Terrinet::on_gecko_clicked()
+{
+    //QProcess builder;
+    std::cout<<"Gecko"<<std::endl;
+    system("gnome-terminal -x bash -c 'killall gzclient;source ~/ws_terrinet/devel/setup.bash; roslaunch gecko_description gecko_gazebo.launch'");
+}
+
 void Terrinet::on_pushButton_clicked()
 {
     //QProcess builder;
@@ -78,9 +85,8 @@ void Terrinet::on_pushButton_2_clicked()
 void Terrinet::on_pushButton_12_clicked()
 {
     std::cout<<"BOBCAT"<<std::endl;
-    //system("gnome-terminal -x bash -c 'killall gzclient;source ~/ws_agv_golf/devel/setup.bash; roslaunch rbcar_sim_bringup rbcar_complete_gs.launch'");
     system("gnome-terminal -x bash -c 'killall gzclient;source ~/ws_terrinet/devel/setup.bash; roslaunch rbcar_sim_bringup rbcar_complete_gs.launch'");
-    //system("gnome-terminal -x bash -c 'killall gzclient;export ROS_PACKAGE_PATH=/home/luis/ws_ual/src:/home/luis/ws_agv_golf/src:/opt/ros/kinetic/share;roslaunch rbcar_sim_bringup rbcar_complete_gs.launch'");
+
 
 
 }
@@ -88,7 +94,6 @@ void Terrinet::on_pushButton_12_clicked()
 void Terrinet::on_pushButton_20_clicked()
 {
     std::cout<<"AGV"<<std::endl;
-    //system("gnome-terminal -x bash -c 'killall gzclient;source ~/ws_agv_golf/devel/setup.bash & source ~/ws_ual/devel/setup.bash; roslaunch ackermann_gazebo ackermann_vehicle.launch'");
     system("gnome-terminal -x bash -c 'killall gzclient;source ~/ws_terrinet/devel/setup.bash;roslaunch ackermann_gazebo ackermann_vehicle.launch'");
 
 

@@ -11,6 +11,11 @@
 #include "geometry_msgs/Twist.h"
 #include "ackermann_msgs/AckermannDriveStamped.h"
 #include "ackermann_msgs/AckermannDrive.h"
+#include "std_msgs/Float64MultiArray.h"
+#include <vector>
+
+
+
 
 namespace Ui {
 class Movement;
@@ -22,6 +27,8 @@ class Movement : public QDialog
 
 public:
     explicit Movement(QWidget *parent = 0);
+
+
     ~Movement();
 
 private slots:
@@ -38,6 +45,8 @@ private slots:
     void on_land_clicked();
 
 
+
+
 private:
 
     Ui::Movement *ui;
@@ -45,6 +54,7 @@ private:
     ros::Publisher _pi_pub;
     ros::Publisher _bob_pub;
     ros::Publisher _agv_pub;
+    ros::Publisher _gecko_pub;
 
     ros::ServiceClient _takeoff_cli;
     ros::ServiceClient _waypoint_cli;
@@ -58,8 +68,12 @@ private:
     geometry_msgs::Twist _piomsg;
     ackermann_msgs::AckermannDriveStamped _bobmsg;
     ackermann_msgs::AckermannDrive _agvmsg;
-    bool _pio=false,_bob=false,_agv=false;
+    std_msgs::Float64MultiArray _geckomsg;
+    bool _pio=false,_bob=false,_agv=false, _gecko=false;
     QString _carvel,_steer,_posx,_posy,_posz,_orix,_oriy,_oriz,_uavel,_id;
+    float _gecko_cnt=0;
+    std::vector<double> _gecko_vec = { 0,0,0,0};
+
 
 
 

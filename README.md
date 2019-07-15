@@ -102,7 +102,7 @@ Secondly, if you want to move them, you can do it trough rostopic list. However,
 But, it is easier to move it with the topic buttom, and a second gui will appear.
 
 <center>
-<a href="gui2.png" target="_blank"><img src="gui2.png" alt="evo" height="400" border="5" /></a>
+<a href="gui2.png" target="_blank"><img src="gui2.png" alt="evo" height="200" border="5" /></a>
 </center>
 
 On the left you can choose the bobcat, pioneer, agv or gecko to move them.

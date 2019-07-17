@@ -52,11 +52,9 @@ Copy this gazemo models into home/$USER/.gazebo/models
 
 git clone https://github.com/luismarzo/Gazebo-models.git
 
+## Install px4 firmware
 
 
-## Install ual
-
-https://github.com/grvcTeam/grvc-ual/wiki/How-to-build-and-install-grvc-ual
 
 `sudo apt-get install libeigen3-dev ros-kinetic-mavros ros-kinetic-mavros-extras ros-kinetic-geodesy ros-kinetic-joy`
 
@@ -66,7 +64,6 @@ https://github.com/grvcTeam/grvc-ual/wiki/How-to-build-and-install-grvc-ual
 
 `sudo geographiclib-get-geoids egm96-5`
 
-## Install firmware
 
 ` cd ~/catkin_ws/src `
 
@@ -77,6 +74,16 @@ https://github.com/grvcTeam/grvc-ual/wiki/How-to-build-and-install-grvc-ual
 ` git checkout -f v1.7.3`
 
 ` git submodule update --recursive`
+
+` cd ~/catkin_ws/src/Firmware `
+
+` make`
+
+` make posix_sitl_default gazebo`
+
+` cd ~/catkin_ws`
+
+` catkin_make`
 
 ## Usage 
 

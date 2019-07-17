@@ -39,6 +39,10 @@
 
 `sudo apt-get install ros-kinetic-hokuyo3d`
 
+`sudo apt-get install libignition-math5-dev`
+
+
+
 
 https://github.com/Derecho/libserial (and install it)
 
